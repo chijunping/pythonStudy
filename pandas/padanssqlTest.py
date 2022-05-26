@@ -4,7 +4,7 @@ import os
 
 # 定义数据路劲
 data_path = os.path.abspath(os.path.join(os.getcwd(), "../data"))
-df_csv_source = pd.read_csv(data_path + "/000001.XSHG.csv")
+df_csv_source = pd.read_csv(data_path + "/test_data.csv")
 
 # 打印df信息
 df_csv_source.info()
