@@ -40,6 +40,7 @@ if __name__ == '__main__':
     # data_with_pct_change['close_pct_20d'] = (data['close'] - data['close'].shift(20)) / data['close'].shift(20)
     # data_with_pct_change['close_pct_30d'] = (data['close'] - data['close'].shift(30)) / data['close'].shift(30)
     #
+    data_with_pct_change['close_pct_yes_is_add'] = data_with_pct_change.shift(1).close_pct_1d.apply(lambda row: -1 if row<0 else 1)
     data_with_pct_change['close_pct_1d_is_add'] = data_with_pct_change.close_pct_1d.apply(lambda row: -1 if row<0 else 1)
     weekday_group=pandasql.sqldf("select weekday,count(1) from data_with_pct_change where close_pct_1d_is_add=1 group by weekday ")
     weekday_group_num=pandasql.sqldf("select weekday_num,count(1) from data_with_pct_change where close_pct_1d_is_add=1 group by weekday_num ")
